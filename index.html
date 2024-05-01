@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Form</title>
+</head>
+
+<body>
+    <h1>File Upload Form</h1>
+    <div id="form">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    <!-- Thông báo thành công -->
+    <div id="upload-success" style="display: none;">
+        <p>Tải file thành công!</p>
+    </div>
+
+    <script>
+        // Hiển thị thông báo khi trang được load
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const success = urlParams.get('success');
+            if (success === 'true') {
+                document.getElementById('upload-success').style.display = 'block';
+            }
+            setTimeout(function() {
+                document.getElementById('upload-success').style.display = 'none';
+            }, 3000);
+        };
+    </script>
+</body>
+
+</html>
